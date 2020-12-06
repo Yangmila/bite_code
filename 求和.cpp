@@ -1,23 +1,30 @@
-#include<stdio.h>
-int Sn(int m)
+#include <math.h>
+#include <iostream>
+#include <stdio.h>
+using namespace std;
+int fact(int n)
 {
-	int i;
-	int add=0,Sum=0;
-	for(i=0;i<5;++i)
-	{
-		add=add*10+m;
-		Sum=Sum+add;
-	}
-	return Sum;
+	if(n!=0)
+	return n*fact(n-1);
+	else 
+	return 1;
 }
-int main()
+int main( )
 {
-	int m;
-	int ret;
+	double sum=1,eps,n;
+	int i=1,a,b;
+	scanf("%le", &eps);
+	while(1)
+	{
+		a=fact(i);
+		b=(2*i)+1;
+		n=(double)a/b;
+		if(n<eps) break;
+
+			sum+=n;
+			i++;	
+	}
 	
-	scanf("%d",&m);
-	ret=Sn(m);
-	printf("Sum=%d",ret);
-	
+	printf("Pi = %.5f",2.0*sum);
 	return 0;
 }
